@@ -2,7 +2,7 @@
   "name": "ylide-pass",
   "private": true,
   "scripts": {
-    "dev": "vite --port 3000",
+    "dev": "vite --port 2828",
     "build": "vite build",
     "lint": "eslint . --ext ts,.tsx && tsc --pretty",
     "tsc": "tsc --noEmit",

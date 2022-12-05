@@ -23,7 +23,7 @@ const Summary: React.FC = () => {
     <S.Container className='p-4'>
       {!summary ? null : (
         <>
-          <div>Royalty</div>
+          <div>Royalties</div>
           <div>
             {!summary.totalPotentialRoyalty
               ? 0
@@ -32,7 +32,7 @@ const Summary: React.FC = () => {
                 )}
             % ({formatPreciseNumber(summary.totalRoyaltyPaid)}/
             {formatPreciseNumber(summary.totalPotentialRoyalty)} SOL) earned
-            royalty
+            fees
           </div>
           <div>Sales</div>
           <div>

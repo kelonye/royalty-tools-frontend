@@ -32,7 +32,7 @@ const CollectionSwitcher: React.FC = () => {
           handleOpenMenu(e.currentTarget);
         }}
       >
-        {collection}
+        {formatCollectionName(collection)}
       </S.Button>
 
       {!collections ? null : (
@@ -47,7 +47,7 @@ const CollectionSwitcher: React.FC = () => {
               key={collection}
               onClick={() => handleSelectCollection(collection)}
             >
-              {collection.toUpperCase()}
+              {formatCollectionName(collection)}
             </MenuItem>
           ))}
         </S.Menu>
@@ -57,3 +57,7 @@ const CollectionSwitcher: React.FC = () => {
 };
 
 export default CollectionSwitcher;
+
+function formatCollectionName(name: string | null) {
+  return name?.replace(/_/g, ' ').toUpperCase() ?? null;
+}
