@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DateRangePicker as BaseDateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import { TextField } from '@mui/material';
 
 import { useCoralCube } from '@app/contexts/coral-cube';
@@ -7,17 +7,22 @@ import { useCoralCube } from '@app/contexts/coral-cube';
 import * as S from './DateRangePicker.styled';
 
 const DateRangePicker: React.FC = () => {
-  const { date, setDate } = useCoralCube();
+  const { dateRange, setDateRange } = useCoralCube();
 
   return (
     <S.Container>
-      <DatePicker
-        label='Date'
-        value={date}
-        onChange={(newDate) => {
-          setDate(newDate);
+      <BaseDateRangePicker
+        value={dateRange}
+        onChange={(newDateRange) => {
+          setDateRange(newDateRange);
         }}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(startProps, endProps) => (
+          <React.Fragment>
+            <TextField {...startProps} InputLabelProps={{ shrink: true }} />
+            <div className='mx-2'>to</div>
+            <TextField {...endProps} InputLabelProps={{ shrink: true }} />
+          </React.Fragment>
+        )}
       />
     </S.Container>
   );

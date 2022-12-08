@@ -8,16 +8,15 @@ import {
   TableRow,
 } from '@mui/material';
 import { Pagination } from '@mui/lab';
+import moment from 'moment';
 
-import { useCoralCube } from '@app/contexts/coral-cube';
+import { useCoralCube, COUNT } from '@app/contexts/coral-cube';
 import { abbrAddr } from '@app/utils/string';
 import CopyToClipboard from '@app/components/shared/CopyToClipboard';
 import { useRequest } from '@app/hooks/useRequest';
 import { formatPreciseNumber } from '@app/utils/bn';
 
 import * as S from './Table.styled';
-
-const COUNT = 15;
 
 type Sale = {
   mint: string;
@@ -32,16 +31,10 @@ type Sale = {
 };
 
 const TableLayout: React.FC = () => {
-  const { collection, page, setPage } = useCoralCube();
+  const { collection, page, setPage, query } = useCoralCube();
 
   const endpoint = collection ? `/sales/${collection}` : null;
-  const query = React.useMemo(
-    () => ({
-      page: page - 1,
-      count: COUNT,
-    }),
-    [page]
-  );
+
   const data = useRequest<{
     data: Sale[];
     totalCount: number;
@@ -55,7 +48,7 @@ const TableLayout: React.FC = () => {
   return (
     <S.Container>
       <TableContainer>
-        <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
+        <Table size='small'>
           <TableHead>
             <TableRow>
               <TableCell>Time</TableCell>
@@ -79,7 +72,7 @@ const TableLayout: React.FC = () => {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component='th' scope='row'>
-                    {sale.time}
+                    {moment(sale.time).format('YYYY-MM-DD HH:mm:ss')}
                   </TableCell>
                   <S.AddressTableCell align='right'>
                     <CopyToClipboard text={sale.buyer}>

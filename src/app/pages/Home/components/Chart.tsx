@@ -2,8 +2,8 @@ import React from 'react';
 import { Chart, ArcElement, Legend, LayoutPosition } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
-import { DEFAULT_QUERY, useRequest } from '@app/hooks/useRequest';
 import { useCoralCube } from '@app/contexts/coral-cube';
+import { useRequest } from '@app/hooks/useRequest';
 
 import * as S from './Chart.styled';
 
@@ -27,9 +27,9 @@ const options = {
 };
 
 const ChartLayout: React.FC = () => {
-  const { collection } = useCoralCube();
+  const { collection, query } = useCoralCube();
   const endpoint = collection ? `/chart/${collection}` : null;
-  const data = useRequest<ChartData>(endpoint, DEFAULT_QUERY);
+  const data = useRequest<ChartData>(endpoint, query);
 
   return (
     <S.Container className='flex justify-center items-center'>

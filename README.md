@@ -14,4 +14,4 @@ Comprehensive royalty analytics for Solana NFT collections.
 
 - Run `yarn` to install node packages
 - Run `yarn dev` to start the app.
-- Visit the dapp at http://localhost:3000
+- Visit the dapp at http://localhost:2828

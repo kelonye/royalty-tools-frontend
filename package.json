@@ -19,6 +19,7 @@
     "@mui/lab": "^5.0.0-alpha.110",
     "@mui/material": "^5.8.2",
     "@mui/x-date-pickers": "^5.0.9",
+    "@mui/x-date-pickers-pro": "^5.0.9",
     "@sweetalert2/theme-dark": "^5.0.10",
     "assert": "^2.0.0",
     "bignumber.js": "^9.1.1",
